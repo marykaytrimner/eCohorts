@@ -955,6 +955,10 @@ rename Q905_other m4_905_other
 
 drop SubmissionDate start end calc_start_time B1 B2_Date B2_Time B2_Place addcomment // NK Note - okay to drop these?
 
+* Add Module char to each variable
+foreach v of varlist * {
+	char `v'[Module] 4
+}
 *===============================================================================
 
 * Value labels - NK approach 

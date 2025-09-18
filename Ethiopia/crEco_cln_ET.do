@@ -7873,7 +7873,7 @@ label value m1_816 m1_816
 		destring `v'_y `v'_m `v'_d, replace
 		rename `v' `v'_string
 		gen `v' = mdy(`v'_m,`v'_d,`v'_y)
-		char `v'[Module] ``v_string'[Module]'
+		char `v'[Module] ``v'_string[Module]'
 		char `v'[Original_ET_Varname] ``v'_string[Original_ET_Varname]'
 		format `v' %td 
 		replace `v' = .d if `v'_string == ".d"

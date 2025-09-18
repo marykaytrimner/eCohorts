@@ -1,6 +1,17 @@
 
+/*******************************************************************************
+* Change log
+* 2025-09-18	MKT 		Added chars for Original_IN_Varname and Module to all varibles
+*******************************************************************************/
 
 use "$in_data/Module5_29052025.dta", clear
+
+* Add a character with the original country specific var name
+foreach v of varlist * {
+	local name `v'
+	char `v'[Original_IN_Varname] `name'
+}
+
 
 *===============================================================================
 
@@ -176,5 +187,9 @@ rename (Q1001 Q1002_a Q1002_b Q1002_c Q1002_d Q1002_e Q1002_e_other Q1003 Q1004 
 merge 1:1 respondentid using "$in_data_final/eco_IN_m1_m4.dta" // 170 not matched
 
 rename _merge merge_m5_to_m4_m3_m2_m1
+
+foreach v of varlist * {
+	char `v'[Module] 5
+}
 
 save "$in_data_final/eco_m1-m5_in.dta", replace
